@@ -20,3 +20,12 @@ __pycache__/
 
 # VS Code
 .vscode/
+# dbt
+dbt_project/dev.duckdb
+dbt_project/target/
+dbt_project/logs/
+logs/
+
+# Duplicate/wrong location files
+notebooks/streamlit_app.py
+requirments.txt.txt
