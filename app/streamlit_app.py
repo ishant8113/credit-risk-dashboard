@@ -11,12 +11,23 @@ import streamlit as st
 from sklearn.metrics import roc_curve, confusion_matrix
 
 # ─────────────────────────────────────────
-# CONFIG
+# PATHS — works locally and on Streamlit Cloud
 # ─────────────────────────────────────────
-import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DB_PATH  = os.path.join(BASE_DIR, 'data', 'credit_risk.db')
 APP_PATH = os.path.join(BASE_DIR, 'app')
+
+# ─────────────────────────────────────────
+# AUTO SETUP — builds DB if it doesn't exist
+# ─────────────────────────────────────────
+if not os.path.exists(DB_PATH):
+    st.info("Setting up database for first time — this takes 2-3 minutes...")
+    os.makedirs(os.path.join(BASE_DIR, 'data'), exist_ok=True)
+    sys.path.insert(0, BASE_DIR)
+    from app.setup_db import setup
+    setup()
+    st.success("Setup complete! Reloading...")
+    st.rerun()
 st.set_page_config(
     page_title = "Credit Risk Dashboard",
     page_icon  = "💳",
