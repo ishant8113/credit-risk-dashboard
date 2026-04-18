@@ -1,0 +1,22 @@
+# Virtual environment — never push this
+venv/
+
+# Database — too large for GitHub
+data/credit_risk.db
+
+# Notebook outputs
+data/*.png
+.ipynb_checkpoints/
+
+# dbt generated files
+dbt_project/target/
+dbt_project/dbt_packages/
+dbt_project/logs/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# VS Code
+.vscode/
